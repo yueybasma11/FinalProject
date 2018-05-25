@@ -5,3 +5,10 @@ body {
 .bottom-margin {
   margin-bottom: 10px;
 }
+
+title {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+p{
+  font-family: cursive;
+}

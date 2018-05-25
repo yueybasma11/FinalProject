@@ -1,18 +1,18 @@
 {% extends "home-base.html"%}
-{% block title %}Delete Company{% endblock %}
+{% block title %}Delete Author{% endblock %}
 {% block page_content%}
 
   <!-- Page Content -->
   <div class="container">
-    <h1 class="mt-5"><i class="fa fa-music" aria-hidden="true"></i> Delete Company:</h1>
-    <form action="/company/delete/{{company.id}}" method="post">
+    <h1 class="mt-5"><i class="fa fa-music" aria-hidden="true"></i> Delete Author:</h1>
+    <form action="/author/delete/{{author.id}}" method="post">
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" name="name" value="{{company.name}}" required="true" readonly="true">
+        <input class="form-control" type="text" name="name" value="{{author.name}}" required="true" readonly="true">
       </div>
       <div class="form-group">
         <label>About</label>
-        <textarea class="form-control" name="about" required="true" readonly="true">{{company.about}}</textarea>
+        <textarea class="form-control" name="about" required="true" readonly="true">{{author.about}}</textarea>
       </div>
       <button type="submit" class="btn btn-danger" id="delete_btn">Delete</button>
     </form>

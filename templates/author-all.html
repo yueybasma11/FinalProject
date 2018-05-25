@@ -1,14 +1,14 @@
 {% extends "home-base.html"%}
-{% block title %}All Companies{% endblock %}
+{% block title %}All Authors{% endblock %}
 {% block page_content%}
 
   <!-- Page Content -->
   <div class="container">
-    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Companies:</h1>
+    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Authors:</h1>
     <div class="row bottom-margin">
-      <a href="/company/add" class="btn btn-primary" role="button" aria-disabled="true">Add Companties</a>
+      <a href="/author/add" class="btn btn-primary" role="button" aria-disabled="true">Add Authors</a>
     </div>
-    {% if companies %}
+    {% if authors %}
       <table class="table">
         <thead>
           <tr>
@@ -19,22 +19,22 @@
           </tr>
         </thead>
         <tbody>
-          {% for company in companies %}
+          {% for author in authors %}
           <tr>
-              <th scope="row">{{company.id}}</th>
-              <td>{{company.name}}</td>
-              <td>{{company.about}}</td>
+              <th scope="row">{{author.id}}</th>
+              <td>{{author.name}}</td>
+              <td>{{author.about}}</td>
               <td>
-                <a href="/company/edit/{{companyid}}" class="btn btn-success" role="button">Edit</a>
-                <a href="/company/delete/{{company.id}}" class="btn btn-danger" role="button">Delete</a>
-                <button class="btn btn-warning delete_ajax_btn" role="button" data-company-id="{{company.id}}">Delete Ajax</a>
+                <a href="/author/edit/{{author.id}}" class="btn btn-success" role="button">Edit</a>
+                <a href="/author/delete/{{author.id}}" class="btn btn-danger" role="button">Delete</a>
+                <button class="btn btn-warning delete_ajax_btn" role="button" data-author-id="{{author.id}}">Delete Ajax</a>
               </td>
           </tr>
           {% endfor%}
         </tbody>
       </table>
     {% else %}
-      <h3>there are no companies in the database yet.</h3>
+      <h3>there is no authors in the database yet.</h3>
     {% endif %}
   </div>
 
@@ -45,12 +45,12 @@
 <script>
   $(document).ready(function() {
     $(".delete_ajax_btn").click(function(event) {
-      var artist_id = $(this).data("artist-id");
-      // get the table row of this song
+      var author_id = $(this).data("author-id");
+      // get the table row of this comic
       var row = $(this).parent().parent();
       swal({
           title: "Are you sure?",
-          text: "All the comics from this company will be deleted too!",
+          text: "All comics of this author will be deleted too!",
           type: "warning",
           html: true,
           showCancelButton: true,
@@ -63,7 +63,7 @@
           if (isConfirm) {
             $.ajax({
                 type: "DELETE",
-                url: "/api/company/" + company_id,
+                url: "/api/author/" + author_id,
                 success: function(response) {
                   console.log(response);
                   row.remove(); // remove the table row

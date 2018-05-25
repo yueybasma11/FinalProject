@@ -1,21 +1,21 @@
 {% extends "home-base.html"%}
-{% block title %}Add Companies{% endblock %}
+{% block title %}Add Authors{% endblock %}
 {% block page_content%}
 
   <!-- Page Content -->
   <div class="container">
-    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Add Artists:</h1>
-    <form action="/company/add" method="post" id="add-company-form">
+    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Add Authors:</h1>
+    <form action="/author/add" method="post" id="add-author-form">
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" name="name" placeholder="Name of the Comic company" required="true">
+        <input class="form-control" type="text" name="name" placeholder="Name of the Author" required="true">
       </div>
       <div class="form-group">
         <label>About</label>
         <textarea class="form-control" name="about" placeholder="Brief Introduction" required="true"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Add Company</button>
-      <button type="submit" class="btn btn-success" id="insert-ajax-btn">Add Company Ajax</button>
+      <button type="submit" class="btn btn-primary">Add Author</button>
+      <button type="submit" class="btn btn-success" id="insert-ajax-btn">Add Author Ajax</button>
     </form>
   </div>
 
@@ -29,10 +29,10 @@
       event.preventDefault(); // prevent the button to submit the form
       $.ajax({
           type: "POST",
-          url: "/api/company/add",
-          data: $("#add-company-form").serialize(),
+          url: "/api/author/add",
+          data: $("#add-author-form").serialize(),
           success: function(response) {
-            window.location.replace("/companies"); // redirect
+            window.location.replace("/authors"); // redirect
           } // end of success callback function
         }) // end of ajax call
         .fail(function(error) {

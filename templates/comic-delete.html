@@ -1,0 +1,41 @@
+{% extends "home-base.html"%}
+{% block title %}Delete Comic{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-music" aria-hidden="true"></i> Delete the following comic:</h1>
+    <form action="/comic/delete/{{comic.id}}" method="post">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" value="{{comic.name}}" required="true" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Year</label>
+        <input class="form-control" type="text" name="year" value="{{comic.year}}" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Author</label>
+        <input class="form-control" type="text" name="author" value="{{comic.author.name}}" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Lyrics</label>
+        <textarea class="form-control" name="lyrics" required="true" readonly="true">{{comic.lyrics}}</textarea>
+      </div>
+      <button type="submit" class="btn btn-danger" id="delete_btn">Delete</button>
+    </form>
+  </div>
+
+{% endblock%}
+{% block scripts%}
+  {{super()}}
+  <script>
+  $(document).ready(function () {
+    $('#delete_btn').click(function () {
+      if (! confirm('Are you sure?')) {
+        return false;
+      }
+    })
+  });
+  </script>
+{% endblock%}
